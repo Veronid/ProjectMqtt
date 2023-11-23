@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "538758246266",
+    "project_id": "contador-de-animales",
+    "storage_bucket": "contador-de-animales.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:538758246266:android:47ff733282f6c42b89b0c3",
+        "android_client_info": {
+          "package_name": "twin.developers.projectmqtt"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCuSZ_1DMdVlSbdpcT-6FLg1SB1-_-NZWU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
