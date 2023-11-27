@@ -56,7 +56,8 @@ public class MainActivity extends AppCompatActivity {
         btnEnviar = findViewById(R.id.btnEnviar);
         btnEliminar = findViewById(R.id.btnEliminar);
         listaAnimales = findViewById(R.id.listaAnimales);
-
+        mqttManager = new Mqtt(getApplicationContext());
+        mqttManager.connectToMqttBroker();
         inicializarFireBase();
         listarDato();
 
@@ -68,6 +69,7 @@ public class MainActivity extends AppCompatActivity {
                 mqtt();
             }
             private void firebase(){
+
                 Animal Animal = new Animal();
                 Animal.setNombreAnimal(txtNombreA.getText().toString());
                 Animal.setNumeroAnimal(txtNumeroA.getText().toString());
