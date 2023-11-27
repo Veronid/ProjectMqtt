@@ -22,7 +22,7 @@ public class Animal {
         return NombreAnimal;
     }
 
-    public void setNombreAnimal(String idNombreAnimal) {this.NombreAnimal = idNombreAnimal;
+    public void setNombreAnimal(String NombreAnimal) {this.NombreAnimal = NombreAnimal;
     }
 
     public String getNumeroAnimal() {

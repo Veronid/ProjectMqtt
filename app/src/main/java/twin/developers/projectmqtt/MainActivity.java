@@ -2,6 +2,7 @@ package twin.developers.projectmqtt;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -40,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
     Button btnEnviar;
     Button btnEliminar;
     ListView listaAnimales;
+    ArrayList Animales;
 
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
@@ -49,19 +51,28 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        txtNombreA = findViewById(R.id.txtNombreA);
-        txtNumeroA = findViewById(R.id.txtNumeroA);
         mqttManager = new Mqtt(getApplicationContext());
         mqttManager.connectToMqttBroker();
+        txtNombreA = findViewById(R.id.txtNombreA);
+        txtNumeroA = findViewById(R.id.txtNumeroA);
         btnEnviar = findViewById(R.id.btnEnviar);
         btnEliminar = findViewById(R.id.btnEliminar);
         listaAnimales = findViewById(R.id.listaAnimales);
-        mqttManager = new Mqtt(getApplicationContext());
-        mqttManager.connectToMqttBroker();
+
         inicializarFireBase();
         listarDato();
 
+        btnEliminar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(
+                        getApplicationContext(),
+                        MainActivity.class
+                );
+                startActivity(intent);
 
+            }
+        });
         btnEnviar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -75,8 +86,9 @@ public class MainActivity extends AppCompatActivity {
                 Animal.setNumeroAnimal(txtNumeroA.getText().toString());
                 databaseReference.child("Animal").child(Animal.getNombreAnimal()).setValue(Animal);
                 databaseReference.child("Animal").child(Animal.getNumeroAnimal()).setValue(Animal);
+                }
 
-            }
+
             private void mqtt(){
                 mqttManager.publishMessage(txtNombreA.getText().toString());
                 mqttManager.publishMessage(txtNumeroA.getText().toString());
@@ -85,14 +97,19 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
     }
 
 
+
         private void listarDato () {
-            databaseReference.child("Contador de animales").addValueEventListener(new ValueEventListener() {
+            databaseReference.child("Animal").addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
                     ListAnimal.clear();
+                    Animales = new ArrayList(ListAnimal);
+                    Animales.add(txtNombreA);
+                    Animales.add(txtNumeroA);
                     for (DataSnapshot objs : snapshot.getChildren()) {
                         Animal li = objs.getValue(Animal.class);
                         ListAnimal.add(li);

@@ -23,10 +23,14 @@
 
     <ListView
         android:id="@+id/listaAnimales"
-        android:layout_width="393dp"
-        android:layout_height="317dp"
-        tools:layout_editor_absoluteX="9dp"
-        tools:layout_editor_absoluteY="453dp" />
+        android:layout_width="375dp"
+        android:layout_height="280dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.444"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
 
     <EditText
         android:id="@+id/txtNumeroA"
