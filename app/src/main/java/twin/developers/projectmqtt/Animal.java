@@ -36,7 +36,7 @@ public class Animal {
 
     @Override
     public String toString() {
-        return "Nombre del Animal{" +
+        return "Nombre del Animal {" +
                 "Nombre='" + NombreAnimal + '\'' +
                 ", Numero='" + NumeroAnimal + '\'' +
                 '}';
